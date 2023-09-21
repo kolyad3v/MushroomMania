@@ -1,13 +1,13 @@
-const express = require('express')
-const connectDB = require('./config/db')
-const path = require('path')
+import express from 'express'
+import { connectDB } from './config/db'
+import path from 'path'
 const app = express()
 
 // Connect Database
 connectDB()
 
 //init middleware
-app.use(express.json({ extended: false }))
+app.use(express.json({}))
 
 //Define routes
 app.use('/api/players', require('./routes/players'))

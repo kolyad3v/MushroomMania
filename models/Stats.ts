@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
-const StatsSchema = mongoose.Schema({
+const StatsSchema = new mongoose.Schema({
 	player: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'players',

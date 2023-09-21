@@ -1,12 +1,8 @@
-const fs = require('fs')
-const mongoose = require('mongoose')
-const colors = require('colors')
+import fs from 'fs'
 
-const config = require('config')
 const db = config.get('mongoURI')
 
 // load models
-const Item = require('./models/Item')
 
 // connect to DB
 mongoose.connect(db, {
@@ -23,7 +19,7 @@ const shrooms = JSON.parse(
 const importData = async () => {
 	try {
 		await Item.create(shrooms)
-		console.log('Data imported...'.green.inverse)
+		console.log('Data imported...')
 		process.exit()
 	} catch (err) {
 		console.error(err)
@@ -34,7 +30,7 @@ const importData = async () => {
 const deleteData = async () => {
 	try {
 		await Item.deleteMany()
-		console.log('Data destroyed...'.red.inverse)
+		console.log('Data destroyed...')
 		process.exit()
 	} catch (err) {
 		console.error(err)

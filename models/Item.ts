@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
-const ItemSchema = mongoose.Schema({
+export const ItemSchema = new mongoose.Schema({
 	player: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'players',

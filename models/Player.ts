@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
-const PlayerSchema = mongoose.Schema({
+export const PlayerSchema = new mongoose.Schema({
 	username: {
 		type: String,
 		required: true,

@@ -1,7 +1,7 @@
-const express = require('express')
-const auth = require('../middleware/auth.js')
+import express from 'express'
+import auth from '../middleware/auth'
 const router = express.Router()
-const Stats = require('../models/Stats.js')
+import Stats from '../models/Stats'
 
 // @route       GET api/stats
 // @desc        get logged in player's stats
