@@ -11,6 +11,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 			far: 2000,
 			position: [-3, 1.5, 4],
 		}}
+		shadows
 	>
 		<Experience />
 	</Canvas>
