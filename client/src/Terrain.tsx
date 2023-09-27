@@ -68,7 +68,7 @@ export function Terrain(props: JSX.IntrinsicElements['group']) {
 		// Returning an object with the movement and look direction
 		return {
 			move: [x, y, z],
-			look: [mouse.x / window.innerWidth, mouse.y / window.innerHeight], // Mouse look direction
+			look: [mouse.x / window.innerWidth - 3, mouse.y / window.innerHeight + 0.2], // Mouse look direction
 			running: keyboard['Shift'], // Boolean to determine if the player is running (Shift key pressed)
 		}
 	}
@@ -99,9 +99,10 @@ export function Terrain(props: JSX.IntrinsicElements['group']) {
 					>
 						<mesh>
 							<planeGeometry args={[100, 5]} />
-							{/* Plane geometry with specified dimensions */}
-							<meshNormalMaterial side={THREE.DoubleSide} />
-							{/* Material for the mesh */}
+							<meshBasicMaterial
+								transparent={true}
+								opacity={0}
+							/>
 						</mesh>
 					</RigidBody>
 				))}

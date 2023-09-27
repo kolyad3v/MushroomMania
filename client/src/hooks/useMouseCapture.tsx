@@ -3,7 +3,7 @@ import { useMemo, useEffect } from 'react'
 // Custom hook for capturing mouse input
 export function useMouseCapture() {
 	// Create a memoized object to store mouse coordinates
-	const mouse = useMemo(() => ({ x: 0, y: 0 }), [])
+	const mouse = useMemo(() => ({ x: -1, y: 0 }), [])
 
 	// Event handler for mouse movement
 	const mouseMove = (e) => {

@@ -1,5 +1,9 @@
 import { useEffect, useRef } from 'react'
-import { RigidBody } from '@react-three/rapier' // Component for rigid body physics simulation
+import {
+	CollisionEnterHandler,
+	CollisionEnterPayload,
+	RigidBody,
+} from '@react-three/rapier' // Component for rigid body physics simulation
 import { useFrame, useThree } from '@react-three/fiber'
 import { Quaternion, Raycaster, Vector3 } from 'three'
 import * as THREE from 'three'
@@ -33,9 +37,10 @@ export const Player = ({
 
 	// Function to update the player's camera orientation based on user input.
 	const updateOrientation = ([x, y]) => {
-		const cameraSpeed = 3 // Speed factor for camera movement.
+		const cameraSpeed = 1 // Speed factor for camera movement.
 		const step = 0.3 // Step for smooth interpolation of camera orientation changes.
 		phi = lerp(phi, -x * cameraSpeed, step) // Interpolate horizontal camera rotation.
+
 		theta = lerp(theta, -y * cameraSpeed, step) // Interpolate vertical camera rotation.
 		theta = clamp(theta, -Math.PI / 3, Math.PI / 3) // Clamp vertical rotation within limits.
 
@@ -88,6 +93,10 @@ export const Player = ({
 		}
 	}, [animationName])
 
+	const handleMushroomCollected = (payload: CollisionEnterPayload) => {
+		console.log(payload.other.rigidBodyObject?.name)
+	}
+
 	return (
 		<RigidBody
 			ref={api} // Attach the RigidBody API reference to the RigidBody component
@@ -96,6 +105,9 @@ export const Player = ({
 			friction={0.5} // Friction coefficient for physics interactions
 			restitution={0.5} // Restitution (bounciness) coefficient for physics interactions
 			colliders='ball' // Type of collider shape for the player's body (a sphere in this case)
+			onCollisionEnter={(other) => {
+				handleMushroomCollected(other)
+			}}
 		>
 			{/* 3D mesh representing the player character */}
 			<primitive

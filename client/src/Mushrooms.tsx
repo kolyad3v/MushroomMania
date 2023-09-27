@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Mushroom } from './Mushroom'
+import { RigidBody } from '@react-three/rapier'
 
 const Mushrooms = () => {
 	const [mushroomData] = useState<{ name: string; source: string; y: number }[]>(
@@ -64,10 +65,14 @@ const Mushrooms = () => {
 	)
 
 	const mushroomSpread = mushroomData.map((el, index) => (
-		<Mushroom
-			data={el}
+		<RigidBody
+			type='fixed'
+			colliders='cuboid'
 			key={index}
-		/>
+			name={el.name}
+		>
+			<Mushroom data={el} />
+		</RigidBody>
 	))
 	return <>{mushroomSpread}</>
 }
