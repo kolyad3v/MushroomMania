@@ -1,7 +1,3 @@
-const express = require('express')
-const auth = require('../middleware/auth.js')
-const router = express.Router()
-const Player = require('../models/Player.js')
 const Item = require('../models/Item.js')
 
 // @route       GET api/items

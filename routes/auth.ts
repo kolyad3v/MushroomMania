@@ -1,12 +1,12 @@
-const express = require('express')
+import express from 'express'
 const router = express.Router()
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
-const config = require('config')
-const auth = require('../middleware/auth')
-const { check, validationResult } = require('express-validator')
+import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
+import config from 'config'
+import auth from '../middleware/auth'
+import { check, validationResult } from 'express-validator'
 
-const Player = require('../models/Player.js')
+import Player from '../models/Player.js'
 
 // @route       GET api/auth
 // @desc        get the player which has logged in
@@ -18,7 +18,7 @@ router.get('/', auth, async (req, res) => {
 
 		res.json(player)
 	} catch (err) {
-		res.status(500).send('server error')
+		res.status(500).send({ msg: 'Server Error' })
 	}
 })
 

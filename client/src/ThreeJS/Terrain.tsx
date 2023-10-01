@@ -8,8 +8,8 @@ import { GLTF } from 'three-stdlib'
 import { useLoader } from '@react-three/fiber'
 import { RigidBody } from '@react-three/rapier'
 import { Player } from './Player' // Importing the Player component to control the character.
-import { useMouseCapture } from './hooks/useMouseCapture' // Importing the hook for mouse input.
-import { useKeyboard } from './hooks/useKeyboard' // Import
+import { useMouseCapture } from '../hooks/useMouseCapture' // Importing the hook for mouse input.
+import { useKeyboard } from '../hooks/useKeyboard' // Import
 
 type GLTFResult = GLTF & {
 	nodes: {

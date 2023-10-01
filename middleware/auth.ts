@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken'
-
-module.exports = function (
+export default function (
 	req: { header: (arg0: string) => any; player: any },
 	res: {
 		status: (arg0: number) => {

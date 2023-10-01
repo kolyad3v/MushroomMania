@@ -1,4 +1,4 @@
-import { Environment, OrbitControls } from '@react-three/drei'
+import { Environment } from '@react-three/drei'
 import { Terrain } from './Terrain'
 import Mushrooms from './Mushrooms'
 import { Suspense, useEffect, useState } from 'react'
