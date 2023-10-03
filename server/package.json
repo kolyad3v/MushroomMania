@@ -2,13 +2,14 @@
 	"name": "mushroommania2",
 	"version": "1.0.0",
 	"description": "Move to TS and R3F",
-	"main": "server.js",
+	"main": "server.ts",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "node server.ts",
+		"build": "npx tsc",
+		"start": "node dist/server.js",
 		"server": "nodemon server.ts",
-		"client": "npm run start --prefix client",
-		"dev": "concurrently \"npm run server\" \"npm run client\""
+		"client": "npm run dev --prefix ./client",
+		"dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/server.js\" \"npm run client\""
 	},
 	"author": "KolyaD3v",
 	"license": "MIT",

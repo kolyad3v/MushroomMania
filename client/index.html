@@ -1,13 +1,72 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+
+		<link
+			rel="icon"
+			href="/favicon.ico"
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1"
+		/>
+
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="/apple-touch-icon.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="/favicon-16x16.png"
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Big Mama's Mushroom Mania</title>
+	</head>
+	<body>
+		<div class="loadingText"></div>
+		<div class="loading-bar"></div>
+		<div
+			id="instructions"
+			class="instructions"
+		>
+			<h2>🍄 Big Mama's Mushroom Mania 🍄</h2>
+			<ul style="list-style: none; text-align: center">
+				<li>W to go forward (hold shift + W to run)🚀</li>
+				<li>S to go backward 🤚</li>
+				<li>A & D to turn around 🐕</li>
+				<li>Space to boogie 💃</li>
+				<li>
+					<strong>
+						Collect as many mushrooms as you can before Big Trev drives off! 🚐
+					</strong>
+				</li>
+			</ul>
+			<div class="playOuter">
+				<h5
+					id="play"
+					class="hide"
+				>
+					Play
+				</h5>
+			</div>
+		</div>
+		<div id="root"></div>
+		<script
+			type="module"
+			src="/src/main.tsx"
+		></script>
+	</body>
 </html>

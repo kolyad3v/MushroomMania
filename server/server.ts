@@ -12,8 +12,8 @@ app.use(express.json({}))
 //Define routes
 app.use('/api/players', require('./routes/players'))
 app.use('/api/auth', require('./routes/auth'))
-app.use('/api/items', require('./routes/items'))
-app.use('/api/stats', require('./routes/stats'))
+// app.use('/api/items', require('./routes/items'))
+// app.use('/api/stats', require('./routes/stats'))
 
 // serve static assets in production
 

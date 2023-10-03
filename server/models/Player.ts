@@ -21,3 +21,4 @@ export const PlayerSchema = new mongoose.Schema({
 })
 
 module.exports = mongoose.model('player', PlayerSchema)
+export default PlayerSchema

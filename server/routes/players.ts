@@ -1,3 +1,11 @@
+import Player from '../models/Player'
+
+import express from 'express'
+import { check, validationResult } from 'express-validator'
+import bcrypt from 'bcryptjs'
+import jwt, { SignOptions } from 'jsonwebtoken'
+import config from 'config'
+const router = express.Router()
 // @route       POST api/players
 // @desc        register a player
 // @access      public
@@ -10,7 +18,7 @@ router.post(
 			{ min: 6 }
 		),
 	],
-	async (req, res) => {
+	async (req: any, res: any) => {
 		const errors = validationResult(req)
 		if (!errors.isEmpty()) {
 			return res.status(400).json({ errors: errors.array() })
@@ -19,13 +27,18 @@ router.post(
 		const { username, email, password } = req.body
 
 		try {
+			//@ts-ignore
+
 			let player = await Player.findOne({ username })
+			//@ts-ignore
+
 			let playerEmail = await Player.findOne({ email })
 			if (player) {
 				return res.status(400).json({ msg: 'Username taken' })
 			} else if (playerEmail) {
 				return res.status(400).json({ msg: 'Email already exists you maggot scum' })
 			}
+			//@ts-ignore
 
 			player = new Player({
 				username,
@@ -46,22 +59,26 @@ router.post(
 				},
 			}
 
-			jwt.sign(
-				payload,
-				config.get('jwtSecret'),
-				{ expiresIn: 36000 },
-				(err, token) => {
-					if (err) {
-						throw err
-					}
-					res.json({ token })
+			try {
+				interface customSignIn extends SignOptions {
+					algorithm: 'none'
 				}
-			)
-		} catch (err) {
+				let options: customSignIn = {
+					expiresIn: 60000,
+					algorithm: 'none',
+				}
+
+				const token = jwt.sign(payload, config.get('jwtSecret'), options)
+
+				res.json({ token })
+			} catch (err: any) {
+				console.error(err.message)
+				res.status(500).send('server error')
+			}
+		} catch (err: any) {
 			console.error(err.message)
 			res.status(500).send('server error')
 		}
 	}
 )
-
 module.exports = router

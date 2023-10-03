@@ -12,9 +12,9 @@ export default function Experience() {
 		stress.volume = 0.3
 		stress.play()
 	}
-	// useEffect(() => {
-	// 	playAudio()
-	// })
+	useEffect(() => {
+		playAudio()
+	})
 
 	return (
 		<>

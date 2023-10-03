@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
 html,
 body,
 #root {
@@ -9,19 +11,100 @@ body,
 	background: ivory;
 }
 
-#sign-in-form {
-	position: relative;
-	margin: 0 auto;
-	max-width: 240px;
+/* Global Styles */
+:root {
+	--primary-color: #412f06;
+	--dark-color: #aad3ee71;
+	--light-color: #f4f4f4;
+	--danger-color: #dc3545;
+	--success-color: #28a745;
+	--subText-color: #ffffff;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+// .webgl {
+// 	position: fixed;
+// 	top: 0;
+// 	left: 0;
+// 	outline: none;
+// 	z-index: -1;
+// }
+
+#auth-page {
+	font-family: 'Acme', sans-serif;
+	h1 {
+		font-size: 48px;
+		font-weight: 900;
+	}
 	text-align: center;
+	line-height: 1.6;
+	height: 100vh;
+	background: linear-gradient(0deg, rgba(0, 0, 0, 0.428), rgba(0, 0, 0, 0.494)),
+		url('/images/landing.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	color: var(--subText-color);
+
 	form {
 		display: flex;
+		max-width: 480px;
 		flex-direction: column;
+		margin: 0 auto;
+
 		input {
-			margin: 8px 0;
-			border: 2px solid black;
-			border-radius: 4px;
-			height: 24px;
+			height: 32px;
+			margin: 0 0 8px 0;
+		}
+		button {
+			margin-top: 16px;
+			height: 32px;
+			cursor: pointer;
+		}
+		.change-auth-button {
+			font-size: 1.5em;
+			margin-top: 32px;
+			strong {
+				position: relative;
+				cursor: pointer;
+				//TODO #2
+				::before {
+					content: ''; /* Step 2: An empty content to make the pseudo-element render */
+					position: absolute; /* Step 3: Absolute positioning within the 'strong' element */
+					right: 0; /* Step 4: Stick it to the right */
+					top: 0; /* Adjust according to where you want it */
+					width: 20px; /* Step 5: Give it dimensions */
+					height: 20px;
+					background-image: url('../public/images/mushroom.png');
+					background-size: contain; /* Step 6: Make sure the image fits */
+				}
+			}
 		}
 	}
+}
+
+ul {
+	list-style: none;
+}
+
+/* Home Screen Game Play */
+
+.backpack {
+	width: 200px;
+	position: absolute;
+	bottom: 10vh;
+	left: 5vw;
+	cursor: pointer;
+}
+
+.stats {
+	position: fixed;
+	top: 25px;
+	left: 100px;
+	width: 25vw;
+	border: #412f06 double;
 }

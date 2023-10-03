@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
-const config = require('config')
-const db = config.get('mongoURI')
+import config from 'config'
+const db: string = config.get('mongoURI')
 
 export const connectDB = async () => {
 	try {
@@ -17,5 +17,3 @@ export const connectDB = async () => {
 		process.exit(1)
 	}
 }
-
-module.exports = connectDB

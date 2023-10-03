@@ -3,17 +3,21 @@ const router = express.Router()
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import config from 'config'
-import auth from '../middleware/auth'
+import { auth } from '../middleware/auth'
 import { check, validationResult } from 'express-validator'
 
-import Player from '../models/Player.js'
+import Player from '../models/Player'
 
 // @route       GET api/auth
 // @desc        get the player which has logged in
 // @access      private
+
+//@ts-ignore
 router.get('/', auth, async (req, res) => {
 	try {
 		// if the auth middleware shows a token, we will go to the database and find the player details whose match that id. return details except the password.
+		//@ts-ignore
+
 		const player = await Player.findById(req.player.id).select('-password')
 
 		res.json(player)
@@ -31,7 +35,7 @@ router.post(
 		check('email', 'please provide a valid email').isEmail(),
 		check('password', 'password is required').exists(),
 	],
-	async (req, res) => {
+	async (req: any, res: any) => {
 		const errors = validationResult(req)
 		if (!errors.isEmpty()) {
 			return res.status(400).json({ errors: errors.array() })
@@ -40,6 +44,8 @@ router.post(
 		const { email, password } = req.body
 
 		try {
+			//@ts-ignore
+
 			let player = await Player.findOne({ email })
 
 			if (!player) {
@@ -58,6 +64,7 @@ router.post(
 					id: player.id,
 				},
 			}
+			//@ts-ignore
 
 			jwt.sign(
 				payload,
@@ -70,7 +77,7 @@ router.post(
 					res.json({ token })
 				}
 			)
-		} catch (err) {
+		} catch (err: any) {
 			console.error(err.message)
 			res.status(500).send('server error')
 		}
