@@ -74,6 +74,7 @@ export const loginPlayer = async (dispatch: any, formData: any) => {
 }
 // logout player
 export const logoutPlayer = (dispatch: any) => {
+	localStorage.clear()
 	dispatch({
 		type: LOGOUT,
 	})

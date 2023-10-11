@@ -9,6 +9,7 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const auth = (req, res, next) => {
     // get token from header
     const token = req.header('x-auth-token');
+    console.log(req.headers);
     // check if not token
     if (!token) {
         return res.status(401).json({ msg: ' no token, auth denied' });

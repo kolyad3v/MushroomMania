@@ -6,6 +6,7 @@ import {
 } from '../context/Authentication/AuthState'
 import { Canvas } from '@react-three/fiber'
 import Experience from '../ThreeJS/Experience'
+import GamePlayOverlay from '../GamePlay/GamePlayOverlay'
 
 const UserAuth: FC = () => {
 	interface IForm {
@@ -71,56 +72,58 @@ const UserAuth: FC = () => {
 
 	if (isAuthenticated) {
 		return (
-			<Canvas
-				camera={{
-					fov: 45,
-					near: 0.1,
-					far: 2000,
-					position: [-3, 1.5, 4],
-				}}
-				shadows
-			>
-				<Experience />
-			</Canvas>
+			<>
+				<GamePlayOverlay />
+				<Canvas
+					camera={{
+						fov: 45,
+						near: 0.1,
+						far: 2000,
+						position: [-3, 1.5, 4],
+					}}
+					shadows
+				>
+					<Experience />
+				</Canvas>
+			</>
 		)
 	}
 
 	return (
-		<div id='auth-page'>
-			<h1>BMMM</h1>
-			<form action='POST'>
+		<div id="auth-page">
+			<form>
 				{!showLogInPage && (
 					<>
-						<label htmlFor='username'>Username</label>
+						<label htmlFor="username">Username</label>
 						<input
-							type='text'
-							name='username'
+							type="text"
+							name="username"
 							value={username}
 							onChange={handleChange}
 						/>
 					</>
 				)}
-				<label htmlFor='email'>Email</label>
+				<label htmlFor="email">Email</label>
 				<input
-					type='email'
-					name='email'
+					type="email"
+					name="email"
 					value={email}
 					onChange={handleChange}
 				/>
-				<label htmlFor='password'>Password</label>
+				<label htmlFor="password">Password</label>
 
 				<input
-					type='password'
-					name='password'
+					type="password"
+					name="password"
 					value={password}
 					onChange={handleChange}
 				/>
 				{!showLogInPage && (
 					<>
-						<label htmlFor='passwordConfirm'>Password Confirm</label>
+						<label htmlFor="passwordConfirm">Password Confirm</label>
 						<input
-							type='password'
-							name='passwordConfirm'
+							type="password"
+							name="passwordConfirm"
 							value={passwordConfirm}
 							onChange={handleChange}
 						/>
@@ -130,15 +133,16 @@ const UserAuth: FC = () => {
 					{showLogInPage ? 'Sign In' : 'Register'}
 				</button>
 				{!showLogInPage && (
-					<p className='change-auth-button'>
-						Already been in the mania?{' '}
+					<p className="change-auth-button">
+						🍄 Have an account?{' '}
 						<strong onClick={() => setShowLogInPage(true)}>Sign In</strong>
 					</p>
 				)}
 				{showLogInPage && (
-					<p className='change-auth-button'>
+					<p className="change-auth-button">
 						No account?{' '}
-						<strong onClick={() => setShowLogInPage(false)}>Register </strong>instead
+						<strong onClick={() => setShowLogInPage(false)}>Register </strong>
+						instead
 					</p>
 				)}
 
